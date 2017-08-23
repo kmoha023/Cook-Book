@@ -22,4 +22,19 @@ export class ShoppingListService {
     this.ingredientChanged.emit(this.ingredients.slice());
   }
 
+
+  addIngredients(ingredients:Ingredient[]){
+  //   for(let ingredient of ingredients){
+  //     this.addIngredients(ingredient);
+  //   }
+           
+  //    (OR)
+    
+    //Coming from recipe.service.ts    
+    //... is spread operator which will transform [] of elements ->
+    // List of elements. To access single
+    this.ingredients.push(...ingredients);
+    this.ingredientChanged.emit(ingredients.slice());
+  }
+
 }

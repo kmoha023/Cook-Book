@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
@@ -31,7 +32,8 @@ import { ShoppingListService } from "app/services/shopping-list.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]

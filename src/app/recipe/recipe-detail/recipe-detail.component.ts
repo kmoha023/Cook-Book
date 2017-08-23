@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ShoppingListService } from "app/services/shopping-list.service";
 import { Ingredient } from "app/shared/ingredient.model";
+import { RecipeService } from "app/services/recipe.service";
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,21 +14,15 @@ export class RecipeDetailComponent implements OnInit {
   @Input()
   recipeSelectedIs: Recipe;
 
-  ingredients: Ingredient[];
+  private ingredients: Ingredient[];
   
-  constructor(private shoppingService:ShoppingListService) { }
+  constructor(private recipeService:RecipeService) { }
 
   ngOnInit() {
-
+    
   }
 
   toShopping(){
-    this.ingredients = this.shoppingService.getIngredients();
-    this.shoppingService.ingredientChanged
-        .subscribe(
-            (ingredients: Ingredient[]) => {
-                this.ingredients = ingredients;
-            }
-        );
+    this.recipeService.passIngredients(this.recipeSelectedIs.ingredient);
   }
 }
